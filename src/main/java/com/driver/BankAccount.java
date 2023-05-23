@@ -30,29 +30,28 @@ public class BankAccount {
         //If it is not possible, throw "Account Number can not be generated" exception
 
         int rem = sum;
-        String accountNo = "";
-        if(digits * 9 < sum){
+        String accNo = "";
+        if(digits*9 < sum){
             throw new Exception("Account Number can not be generated");
         }
         else{
-            while(digits >0  && rem > 0){
+            while(digits > 0 && rem > 0){
                 if(rem >= 9){
                     rem = rem - 9;
-                    accountNo = accountNo + 9;
+                    accNo = accNo + "9";
                 }
                 else{
-                    accountNo = accountNo + Integer.toString(rem);
+                    accNo = accNo + Integer.toString(rem);
                     rem = 0;
                 }
                 digits--;
             }
             while(digits > 0){
-                accountNo = accountNo + 0;
+                accNo = accNo + "0";
                 digits--;
             }
-            return accountNo;
+            return accNo;
         }
-//        return null;
     }
 
     public void deposit(double amount) {
@@ -64,7 +63,7 @@ public class BankAccount {
 
     public void withdraw(double amount) throws Exception {
         // Remember to throw "Insufficient Balance" exception, if the remaining amount would be less than minimum balance
-        if(this.balance - amount >= this.minBalance){
+        if(this.balance - amount >= getMinBalance()){
             this.balance = this.balance - amount;
         }
         else throw new Exception("Insufficient Balance");
