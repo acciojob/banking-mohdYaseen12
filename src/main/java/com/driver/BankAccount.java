@@ -31,7 +31,7 @@ public class BankAccount {
 
         int rem = sum;
         String accountNo = "";
-        if(9*digits < sum){
+        if(digits * 9 < sum){
             throw new Exception("Account Number can not be generated");
         }
         else{
